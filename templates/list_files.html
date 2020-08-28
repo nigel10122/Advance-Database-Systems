@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<tr>
+		<th>Name</th>
+		<th>Size</th>
+	</tr>
+{% for fname, fsize in result.items() %}
+	<tr>
+		<td>{{ fname }}</td>
+		<td>{{ fsize }} bytes</td>
+	</tr>
+{% endfor %}
+</table>
+
+<br>
+
+
+<a href="{{ url_for('index') }}">Go back to Home Page</a>
+{% endblock %}
+

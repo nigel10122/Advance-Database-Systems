@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<form action="show_pic" method="post">
+	<div class="form-group">
+	<label>Enter Name to display picture (FOR EG : Alice )</label>
+	<input type="text" name="picture_mem">
+	</div>
+
+	<br>
+	<input type="submit" name="room_submit" value="get Corresponding pic">
+</form>
+
+<br>
+
+{% if result == False %}
+	No result
+{% else %}
+{% for item in result %}
+	<h3>{{ item[0] }}<h3>
+{% if item[4] != None %}
+<img src="{{ url_for('static', filename='pics/' + item[4]) }}">
+{% else %}
+<h3> No image available for {{ item[0] }}</h3>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+<br>
+
+<a href="{{ url_for('index') }}">Go back to Home Page</a>
+{% endblock %}
